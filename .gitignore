@@ -1,0 +1,7 @@
+# 
+
+# we have some files than we can mark them like *.txt or something
+# txt-files will be ingnored
+docs/*.txt
+*.jshintrc 
+node_modules/
