@@ -1,6 +1,53 @@
-body
-  margin: 0
-  padding: 0
-  height: 100%
+@import 'variables'
+@import 'interface'
+@import 'form'
+@import 'createpost'
+@import 'loader'
+.container
+  margin: 0 auto
+  width: 600px
+.header
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding: 0 15px
+  height: 100vh
+  background: #078dff
+  &-button    
+    height: 50px
+    padding: 0 30px
+    line-height: 50px
+    
+.tabs
+  list-style: none
+  display: flex
+  margin: 15px 0 30px
+.tabs
+  list-style: none
+  display: flex
+  justify-content: space-around
+  margin: 15px 0 30px
+ul.tabs li
   width: 100%
-  background-color: #51b1b6
+
+ul.tabs li a
+  text-decoration: none
+  color: $textColorDark
+  border-bottom: 1px solid #e0e0e0
+  width: 100%
+  text-align: center
+  padding: 8px 45px
+ul.tabs li a.active
+  border-top: 2px solid #4caf50
+  border-left: 1px solid #e0e0e0
+  border-right: 1px solid #e0e0e0
+  border-bottom: none
+  color: darken($textColorDark, 20%)
+.tabs:hover
+  opacity: 1
+  color: #424242
+
+.hide 
+  display: none !important
