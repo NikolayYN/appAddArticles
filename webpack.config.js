@@ -47,7 +47,7 @@ module.exports = {
   mode: 'development',
 
   entry: {
-    main: ['@babel/polyfill', './javaScript/index.js'],
+    main: ['@babel/polyfill', './index.js'],
 
   },
   output: {
