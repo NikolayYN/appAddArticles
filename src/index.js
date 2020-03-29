@@ -33,6 +33,5 @@ nav.getTab([{
   {
     name: 'posts',
     component: posts
-
   }
 ]);
