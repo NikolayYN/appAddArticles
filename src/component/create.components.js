@@ -17,7 +17,7 @@ export class Create extends Component {
     this.$el.addEventListener('submit', submitHendler.bind(this));
     this.form = new Form(this.$el, {
       title: [Validator.require],
-      fulltext: [Validator.require],
+      fulltext: [Validator.require, Validator.requireLength(15)],
     });
 
     console.log('FORMAA', this);
