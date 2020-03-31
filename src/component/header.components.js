@@ -11,7 +11,7 @@ export class HeaderComponent extends Component {
   init() {
 
     if (localStorage.getItem('HasVsited')) {
-      console.log('im here');
+
       this.hide();
     }
 
@@ -21,7 +21,6 @@ export class HeaderComponent extends Component {
 };
 
 function btnRefer() {
-  console.log('imhereToo');
   this.hide();
 
   let checkVisit = localStorage.setItem('HasVsited', JSON.stringify(true));

@@ -56,7 +56,7 @@ module.exports = {
   },
   optimization: optimization(),
   devServer: {
-    port: 4200,
+    port: 8080,
     hot: isDev,
     contentBase: path.join(__dirname, 'dist'),
     compress: true,

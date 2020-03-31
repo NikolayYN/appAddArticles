@@ -7,36 +7,39 @@ import {
 import {
   Validator
 } from './../core/validator';
+
+import {
+  apiServer
+} from '../servers/server.api';
+
 export class Create extends Component {
   constructor(id) {
     super(id)
 
   }
   init() {
-    console.log('3');
     this.$el.addEventListener('submit', submitHendler.bind(this));
     this.form = new Form(this.$el, {
       title: [Validator.require],
       fulltext: [Validator.require, Validator.requireLength(15)],
     });
 
-    console.log('FORMAA', this);
     // debugger
   }
 }
 
-function submitHendler(e) {
+async function submitHendler(e) {
   e.preventDefault()
 
   if (this.form.isValid()) {
     const dataForm = {
       type: this.$el.type.value,
+      date: new Date().toLocaleDateString(),
       ...this.form.value()
     }
-    // console.log(this.form);
-    console.log('this.form.value', dataForm);
-  } else {
-    console.log('wrong!!!!');
+    console.log(JSON.stringify(dataForm));
+    await apiServer.setPost(dataForm);
+    this.form.clearFields();
   }
 
 

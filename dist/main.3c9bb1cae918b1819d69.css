@@ -53,10 +53,20 @@ body {
   background-color: #fff;
 }
 
-.form-control input, select, textarea {
+.validation-error {
+  color: #f10c0cab;
+  font-size: 11px;
+  margin-top: -10px;
+}
+
+.form-control input, select, #textarea {
   display: block;
   margin-bottom: 15px;
   margin-top: 10px;
+}
+
+.form-control input.invalid, select.invalid, #textarea.invalid {
+  border-color: #f10c0cab;
 }
 
 .form-control input:focus, select:focus, #textarea:focus {
