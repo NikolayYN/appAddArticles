@@ -1,11 +1,16 @@
-export class Form {
+import {
+  apiServer
+} from '../servers/server.api';
 
+
+
+export class Form {
   constructor(form, fileds) {
     this.form = form;
     this.fileds = fileds;
+
   }
   value() {
-    console.log('2');
     const value = {};
 
     Object.keys(this.fileds).forEach(field => {
