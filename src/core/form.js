@@ -39,6 +39,9 @@ export class Form {
   clearFields() {
     Object.keys(this.fileds).forEach(l => this.form[l].value = '');
   }
+  btn() {
+
+  }
 }
 
 function setError(label) {

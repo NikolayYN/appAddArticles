@@ -13,7 +13,7 @@ class ApiRequest {
       return getResponse(request);
 
     } catch (error) {
-      console.log(error);
+      console.log('eto os oshibka', error);
     }
   }
   async getDataPost() {

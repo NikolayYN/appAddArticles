@@ -29,6 +29,8 @@ function tabChangeCLick(e) {
     Array.from(this.$el.querySelectorAll('.tab'), item => item.classList.remove('active'));
 
     const findComponent = this.tabs.find(i => i.name === target.dataset.name);
+    // findComponent.component.show();
+    target.classList.add('active')
     findComponent.component.show();
 
 
