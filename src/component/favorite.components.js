@@ -12,23 +12,32 @@ export class Favorite extends Component {
 
   }
   onShow() {
+
     const listFavorite = JSON.parse(localStorage.getItem('idPost')) || [];
+    const html = setHTML(listFavorite);
+    console.log('html: ', html);
+    this.$el.insertAdjacentHTML('afterbegin', html);
 
-
-    Object.keys(listFavorite).forEach(li => {
-      this.$el.insertAdjacentHTML('afterbegin', setHTML(listFavorite[li]));
-    })
+    // Object.keys(listFavorite).forEach(li => {
+    //  );
+    // })
   }
   onClose() {
     this.$el.innerHTML = '';
   }
 }
 function setHTML(li) {
-  if (li) {
-    const HtMLlist = `<div id="${li.id}"></div><ul class="favorite_list">
-    <li><a href="#" data-id="${li.id}">${li.name}</a></li></ul>
-  `
-    return HtMLlist;
+  console.log(li.length);
+  if (li.length) {
+    const renderLi = Object.keys(li).map(l => {
+
+      return `<div id="${li[l].id}"></div><ul class="favorite_list">
+      <li><a href="#" data-id="${li[l].id}">${li[l].name}</a></li></ul>
+    `;
+
+    })
+    return renderLi.join(' ');
+
   }
   return `<p class="center">Здесь будут сохраненные посты</p>`
 }
@@ -38,13 +47,14 @@ async function linkHeandler(e) {
 
 
   if (e.target.dataset) {
-    // outPut.innerHTML = '';
+
     const block = this.$el.querySelector('#' + e.target.dataset.id);
     block.innerHTML = '';
     this.loader.show();
     const data = await apiServer.getPostFavorite(e.target.dataset.id);
     if (data) {
       e.target.style.color = '#47d1a5';
+      e.target.style.display = 'none';
     }
 
 

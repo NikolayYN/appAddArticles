@@ -22,7 +22,6 @@ export class Posts extends Component {
   }
   onClose() {
     this.$el.innerHTML = '';
-    console.log(this.arrid);
   }
 }
 
