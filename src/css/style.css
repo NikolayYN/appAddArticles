@@ -59,6 +59,20 @@ body {
   margin-top: -10px;
 }
 
+.favorite_list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.favorite_list li a {
+  text-decoration: none;
+  color: #48b12b;
+}
+
+.center {
+  text-align: center;
+}
+
 .form-control input, select, #textarea {
   display: block;
   margin-bottom: 15px;

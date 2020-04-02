@@ -5,7 +5,6 @@ import { getHTMLPost } from './renderHTMLPost';
 export class Favorite extends Component {
   constructor(id, { loader }) {
     super(id)
-    this.listObj = [];
     this.loader = loader;
   }
   init() {
@@ -13,11 +12,11 @@ export class Favorite extends Component {
 
   }
   onShow() {
-    const listFavorite = JSON.parse(localStorage.getItem('idPost'));
-    this.listObj = listFavorite;
+    const listFavorite = JSON.parse(localStorage.getItem('idPost')) || [];
 
-    Object.keys(this.listObj).forEach(li => {
-      this.$el.insertAdjacentHTML('afterbegin', `<ul class="favorite_list">${setHTML(this.listObj[li])}</ul>`);
+
+    Object.keys(listFavorite).forEach(li => {
+      this.$el.insertAdjacentHTML('afterbegin', setHTML(listFavorite[li]));
     })
   }
   onClose() {
@@ -25,18 +24,33 @@ export class Favorite extends Component {
   }
 }
 function setHTML(li) {
-  const HtMLlist = `
-    <li><a href="#" data-id="${li.id}">${li.name}</a></li>
+  if (li) {
+    const HtMLlist = `<div id="${li.id}"></div><ul class="favorite_list">
+    <li><a href="#" data-id="${li.id}">${li.name}</a></li></ul>
   `
-  return HtMLlist;
+    return HtMLlist;
+  }
+  return `<p class="center">Здесь будут сохраненные посты</p>`
 }
 async function linkHeandler(e) {
   e.preventDefault();
+  console.log('outPut: ', this.$el.dataset);
+
+
   if (e.target.dataset) {
-    e.target.style.display = 'none';
+    // outPut.innerHTML = '';
+    const block = this.$el.querySelector('#' + e.target.dataset.id);
+    block.innerHTML = '';
     this.loader.show();
     const data = await apiServer.getPostFavorite(e.target.dataset.id);
-    this.$el.insertAdjacentHTML('afterbegin', getHTMLPost(data));
+    if (data) {
+      e.target.style.color = '#47d1a5';
+    }
+
+
+    block.insertAdjacentHTML('afterbegin', getHTMLPost(data, { btnFlag: false }));
+
     this.loader.hide();
   }
 }
+

@@ -13,7 +13,7 @@ export class Posts extends Component {
     const getArrFb = FireBaseData.converDataToArray(data)
     this.loader.hide()
     getArrFb.forEach(item => {
-      this.$el.insertAdjacentHTML('afterbegin', getHTMLPost(item))
+      this.$el.insertAdjacentHTML('afterbegin', getHTMLPost(item, { btnFlag: true }))
     });
   }
   init() {

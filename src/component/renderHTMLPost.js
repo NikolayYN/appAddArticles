@@ -1,4 +1,4 @@
-export function getHTMLPost(post) {
+export function getHTMLPost(post, btnFlag = {}) {
   const favorite = (JSON.parse(localStorage.getItem('idPost')) || []);
   const contender = favorite.find(idContender => idContender.id === post.id);
   let btn = contender ?
@@ -23,10 +23,11 @@ export function getHTMLPost(post) {
     
     <div class="panel-footer ">
       <small>${post.date}</small>
-      ${btn}
-    </div>  
-  </div>
+      ${btnFlag.btnFlag ? btn : ''}
+      
+    </div >  
+  </div >
   <hr>
-  `
+    `
 
 }
