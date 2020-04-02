@@ -9,18 +9,12 @@ export class Favorite extends Component {
   }
   init() {
     this.$el.addEventListener('click', linkHeandler.bind(this))
-
   }
   onShow() {
-
     const listFavorite = JSON.parse(localStorage.getItem('idPost')) || [];
     const html = setHTML(listFavorite);
     console.log('html: ', html);
     this.$el.insertAdjacentHTML('afterbegin', html);
-
-    // Object.keys(listFavorite).forEach(li => {
-    //  );
-    // })
   }
   onClose() {
     this.$el.innerHTML = '';
@@ -30,24 +24,19 @@ function setHTML(li) {
   console.log(li.length);
   if (li.length) {
     const renderLi = Object.keys(li).map(l => {
-
       return `<div id="${li[l].id}"></div><ul class="favorite_list">
       <li><a href="#" data-id="${li[l].id}">${li[l].name}</a></li></ul>
     `;
 
     })
     return renderLi.join(' ');
-
   }
   return `<p class="center">Здесь будут сохраненные посты</p>`
 }
 async function linkHeandler(e) {
   e.preventDefault();
   console.log('outPut: ', this.$el.dataset);
-
-
   if (e.target.dataset) {
-
     const block = this.$el.querySelector('#' + e.target.dataset.id);
     block.innerHTML = '';
     this.loader.show();

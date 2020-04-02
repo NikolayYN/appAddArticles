@@ -7,8 +7,6 @@ export function getHTMLPost(post, btnFlag = {}) {
   const typeNote = post.type === 'news' ?
     `<li class="tag tag-blue">Новость</li>` :
     `<li class="tag  ">Заметка</li>`
-
-
   return `
   <div class="panel">
     <div class="panel-head">
@@ -23,8 +21,7 @@ export function getHTMLPost(post, btnFlag = {}) {
     
     <div class="panel-footer ">
       <small>${post.date}</small>
-      ${btnFlag.btnFlag ? btn : ''}
-      
+      ${btnFlag.btnFlag ? btn : ''}      
     </div >  
   </div >
   <hr>
