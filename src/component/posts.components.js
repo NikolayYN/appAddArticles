@@ -25,8 +25,8 @@ export class Posts extends Component {
 
 function getHTMLPost(post) {
   let btn = (JSON.parse(localStorage.getItem('idPost')) || []).includes(post.id) ?
-    `<button class="btn-main btn-savepost btn-delete" data-id="${post.id}">Удалить </button>`
-    : `<button class="btn-main btn-savepost" data-id="${post.id}">Сохранить</button>`;
+    `<button class="btn-main btn-savepost btn-delete" data-id="${post.id}" data-title="${post.title}">Удалить </button>`
+    : `<button class="btn-main btn-savepost" data-id="${post.id}" data-title="${post.title}">Сохранить</button>`;
   const typeNote = post.type === 'news' ?
     `<li class="tag tag-blue">Новость</li>` :
     `<li class="tag  ">Заметка</li>`
@@ -59,23 +59,41 @@ function btnHandler(e) {
 
 
   if (target.dataset.id) {
-    let arrId = JSON.parse(localStorage.getItem('idPost')) || [];
 
-
-    if (arrId.includes(target.dataset.id)) {
-      target.textContent = "Сохранить"
-      target.classList.remove('btn-delete');
-
-      arrId = arrId.filter(fbId => fbId !== target.dataset.id);
-    } else {
-      target.classList.add('btn-delete');
-      target.textContent = "Удалить"
-      arrId.push(target.dataset.id);
-      // arrId.push(target.dataset.id)
-      // localStorage.setItem('idPost', );
-
+    const getDataPost = {
+      id: target.dataset.id,
+      name: target.dataset.title,
     }
+    let arrId = (JSON.parse(localStorage.getItem('idPost'))) || [];
+    const findId = arrId.find(item => item.id === target.dataset.id);
+    console.log(findId);
+    if (findId) {
+      target.textContent = "Сохранить"
+      target.classList.remove('btn-delete')
+      arrId = arrId.filter(fbId => fbId.id !== target.dataset.id);
+
+    } else {
+      arrId.push(getDataPost);
+      target.classList.add('btn-delete');
+      target.textContent = "Удалить";
+    }
+
+
+
+
     localStorage.setItem('idPost', JSON.stringify(arrId));
   }
 
+
+
 }
+// target.textContent = "Сохранить"
+// target.classList.remove('btn-delete');
+
+// arrId = arrId.filter(fbId => fbId !== target.dataset.id); else {
+//   target.classList.add('btn-delete');
+//   target.textContent = "Удалить"
+//   arrId.push(getDataPost);
+  // arrId.push(target.dataset.id)
+  // localStorage.setItem('idPost', );
+
