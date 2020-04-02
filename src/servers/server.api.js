@@ -25,8 +25,14 @@ class ApiRequest {
     } catch (error) {
       console.log(error);
     }
-
-
+  }
+  async getPostFavorite(id) {
+    try {
+      const request = new Request(`${this.url}/posts/${id}.json`)
+      return getResponse(request);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

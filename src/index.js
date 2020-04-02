@@ -11,17 +11,13 @@ import { Create } from './component/create.components';
 import { Posts } from './component/posts.components';
 import { Loader } from './component/loading.components';
 
-
 const loader = new Loader('loader')
-const favorite = new Favorite('favorite');
+
 const create = new Create('create');
 const posts = new Posts('posts', { loader });
-
 const header = new HeaderComponent('header');
-
-
 const nav = new NavigationComponent('navigation');
-
+const favorite = new Favorite('favorite', { loader });
 nav.getTab([{
   name: 'create',
   component: create,
