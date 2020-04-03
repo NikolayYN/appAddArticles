@@ -73,6 +73,11 @@ body {
   text-align: center;
 }
 
+.favorite > div {
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
 .form-control input, select, #textarea {
   display: block;
   margin-bottom: 15px;
@@ -171,6 +176,10 @@ body {
 .btn-delete {
   background-color: #f10c0cab;
   color: #fff;
+}
+
+.btn-del-favorite {
+  background-color: #f10c0cab;
 }
 
 .loader-wrap {
