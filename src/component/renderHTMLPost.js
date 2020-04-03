@@ -1,9 +1,11 @@
-export function getHTMLPost(post, btnFlag = {}) {
+export function getHTMLPost(post, btnFlag = {}, idLink) {
   const favorite = (JSON.parse(localStorage.getItem('idPost')) || []);
   const contender = favorite.find(idContender => idContender.id === post.id);
+
   let btn = contender ?
     `<button class="btn-main btn-savepost btn-delete" data-id="${post.id}" data-title="${post.title}">Удалить </button>`
     : `<button class="btn-main btn-savepost" data-id="${post.id}" data-title="${post.title}">Сохранить</button>`;
+  const btnDel = `<button class="btn-main btn-del-favorite" data-fav="${idLink}" data-title="${post.title}">Удалить из избранного</button>`;
   const typeNote = post.type === 'news' ?
     `<li class="tag tag-blue">Новость</li>` :
     `<li class="tag  ">Заметка</li>`
@@ -21,7 +23,7 @@ export function getHTMLPost(post, btnFlag = {}) {
     
     <div class="panel-footer ">
       <small>${post.date}</small>
-      ${btnFlag.btnFlag ? btn : ''}      
+      ${btnFlag.btnFlag ? btn : btnDel}      
     </div >  
   </div >
   <hr>

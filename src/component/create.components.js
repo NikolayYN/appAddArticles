@@ -35,7 +35,8 @@ async function submitHendler(e) {
     const dataForm = {
       type: this.$el.type.value,
       date: new Date().toLocaleDateString(),
-      ...this.form.value()
+      ...this.form.value(),
+      randId: Date.now()
     }
     console.log(JSON.stringify(dataForm));
     await apiServer.setPost(dataForm);

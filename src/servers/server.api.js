@@ -28,7 +28,9 @@ class ApiRequest {
   }
   async getPostFavorite(id) {
     try {
-      const request = new Request(`${this.url}/posts/${id}.json`)
+      const request = new Request(`${this.url}/posts/${id}.json`, {
+        method: 'GET'
+      });
       return getResponse(request);
     } catch (error) {
       console.log(error);
